@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{02AB405E-C714-49AC-8FAD-456D37AE5DB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6E5197C3-0FBB-496F-A357-50BDAA5FD071}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{CF1F46A5-AF5F-44DB-82B8-41A900081969}"
+	ProjectSection(SolutionItems) = preProject
+		Dlls\readme.txt = Dlls\readme.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{2488609D-DA45-4FC2-B3B7-E048CFE9C1A3}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\readme.txt = Documentation\readme.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analysis", "{627E9A15-4F07-4414-8A7F-50EAC8CAC5B4}"
+	ProjectSection(SolutionItems) = preProject
+		Internal\Code Analysis\qaction-debug.ruleset = Internal\Code Analysis\qaction-debug.ruleset
+		Internal\Code Analysis\qaction-release.ruleset = Internal\Code Analysis\qaction-release.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generic Classes", "Generic Classes", "{89148B7F-C6B9-4719-81A6-AE4889005C6A}"
+	ProjectSection(SolutionItems) = preProject
+		Generic Classes\Conviva.cs = Generic Classes\Conviva.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Create Conviva DOM", "Create Conviva DOM", "{C5843F1C-00B3-48DA-873F-4F89470B107F}"
+	ProjectSection(SolutionItems) = preProject
+		Create Conviva DOM.xml = Create Conviva DOM.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Create Conviva Filter", "Create Conviva Filter", "{A4E53583-5E46-4A2A-8D89-C00FB1BD1173}"
+	ProjectSection(SolutionItems) = preProject
+		Create Conviva Filter.xml = Create Conviva Filter.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Create Conviva Metric Lens", "Create Conviva Metric Lens", "{0520166C-72D1-4E93-AD2B-829451F88F97}"
+	ProjectSection(SolutionItems) = preProject
+		Create Conviva Metric Lens.xml = Create Conviva Metric Lens.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deactivate Conviva", "Deactivate Conviva", "{A99522D2-A950-4CAF-BE4D-3CEF045B8B36}"
+	ProjectSection(SolutionItems) = preProject
+		Deactivate Conviva.xml = Deactivate Conviva.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{5090920C-97B2-4B16-94E6-1B18C9E227C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Create Conviva DOM", "Create Conviva DOM\Create Conviva DOM.csproj", "{60425E52-19E6-404E-9CED-0BE213687C93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{39AA3B72-D05B-4C8C-AA7A-B74E665E4EDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Create Conviva Filter", "Create Conviva Filter\Create Conviva Filter.csproj", "{5F57757D-864B-498F-946F-AE237A27BB81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{E580CEEB-03A9-4C50-A5C5-64DAED9A277C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Create Conviva Metric Lens", "Create Conviva Metric Lens\Create Conviva Metric Lens.csproj", "{06EAE1B1-1C25-4A18-857C-4742EEDEAD04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{AD1E1CC0-2C9C-4680-AF7A-91B673351319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deactivate Conviva", "Deactivate Conviva\Deactivate Conviva.csproj", "{B0608465-48C1-4376-9F3E-9362995E7EFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60425E52-19E6-404E-9CED-0BE213687C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60425E52-19E6-404E-9CED-0BE213687C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60425E52-19E6-404E-9CED-0BE213687C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60425E52-19E6-404E-9CED-0BE213687C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F57757D-864B-498F-946F-AE237A27BB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F57757D-864B-498F-946F-AE237A27BB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F57757D-864B-498F-946F-AE237A27BB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F57757D-864B-498F-946F-AE237A27BB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06EAE1B1-1C25-4A18-857C-4742EEDEAD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06EAE1B1-1C25-4A18-857C-4742EEDEAD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06EAE1B1-1C25-4A18-857C-4742EEDEAD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06EAE1B1-1C25-4A18-857C-4742EEDEAD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{627E9A15-4F07-4414-8A7F-50EAC8CAC5B4} = {02AB405E-C714-49AC-8FAD-456D37AE5DB0}
+		{89148B7F-C6B9-4719-81A6-AE4889005C6A} = {6E5197C3-0FBB-496F-A357-50BDAA5FD071}
+		{C5843F1C-00B3-48DA-873F-4F89470B107F} = {6E5197C3-0FBB-496F-A357-50BDAA5FD071}
+		{A4E53583-5E46-4A2A-8D89-C00FB1BD1173} = {6E5197C3-0FBB-496F-A357-50BDAA5FD071}
+		{0520166C-72D1-4E93-AD2B-829451F88F97} = {6E5197C3-0FBB-496F-A357-50BDAA5FD071}
+		{A99522D2-A950-4CAF-BE4D-3CEF045B8B36} = {6E5197C3-0FBB-496F-A357-50BDAA5FD071}
+		{5090920C-97B2-4B16-94E6-1B18C9E227C7} = {C5843F1C-00B3-48DA-873F-4F89470B107F}
+		{60425E52-19E6-404E-9CED-0BE213687C93} = {5090920C-97B2-4B16-94E6-1B18C9E227C7}
+		{39AA3B72-D05B-4C8C-AA7A-B74E665E4EDD} = {A4E53583-5E46-4A2A-8D89-C00FB1BD1173}
+		{5F57757D-864B-498F-946F-AE237A27BB81} = {39AA3B72-D05B-4C8C-AA7A-B74E665E4EDD}
+		{E580CEEB-03A9-4C50-A5C5-64DAED9A277C} = {0520166C-72D1-4E93-AD2B-829451F88F97}
+		{06EAE1B1-1C25-4A18-857C-4742EEDEAD04} = {E580CEEB-03A9-4C50-A5C5-64DAED9A277C}
+		{AD1E1CC0-2C9C-4680-AF7A-91B673351319} = {A99522D2-A950-4CAF-BE4D-3CEF045B8B36}
+		{B0608465-48C1-4376-9F3E-9362995E7EFC} = {AD1E1CC0-2C9C-4680-AF7A-91B673351319}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8499A11E-98F8-4DC1-8576-E5B0C68BF48C}
+	EndGlobalSection
+EndGlobal
