@@ -72,10 +72,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Create Conviva DOM\Create Conviva DOM.csproj">
-      <Project>{60425E52-19E6-404E-9CED-0BE213687C93}</Project>
-      <Name>Create Conviva DOM</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Create Conviva Filter\Create Conviva Filter.csproj">
       <Project>{5F57757D-864B-498F-946F-AE237A27BB81}</Project>
       <Name>Create Conviva Filter</Name>
