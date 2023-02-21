@@ -64,6 +64,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{AD1E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deactivate Conviva", "Deactivate Conviva\Deactivate Conviva.csproj", "{B0608465-48C1-4376-9F3E-9362995E7EFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Create Conviva FilterTests", "Create Conviva FilterTests\Create Conviva FilterTests.csproj", "{A0868A9A-16F0-418E-A17A-4C67522E3B0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0608465-48C1-4376-9F3E-9362995E7EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0868A9A-16F0-418E-A17A-4C67522E3B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0868A9A-16F0-418E-A17A-4C67522E3B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0868A9A-16F0-418E-A17A-4C67522E3B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0868A9A-16F0-418E-A17A-4C67522E3B0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

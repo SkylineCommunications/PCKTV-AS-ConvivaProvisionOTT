@@ -100,7 +100,7 @@ public class Script
 		}
 		catch (Exception ex)
 		{
-			engine.Log(scriptName + $"|Failed to execute the TAG Monitor due to exception: " + ex);
+			engine.Log(scriptName + $"|Failed to create Conviva DOM due to exception: " + ex);
 		}
 	}
 
@@ -154,18 +154,20 @@ public class Script
 			operationEnum.AddEntry("Contains", "contains");
 			operationEnum.AddEntry("Not Contains", "notcontains");
 
+			var fieldFieldDescriptor = CreateFieldDescriptorObject<string>("Field", "Field value for Conviva Rule.");
 			var operationFieldDescriptor = CreateEnumFieldDescriptorObject("Operation", "What type of search will Conviva perform with this rule.", operationEnum);
 			var valueFieldDescriptor = CreateFieldDescriptorObject<string>("Value", "Link to the DOM Instance that contains the information for TAG provisioning.");
 			var keyFieldDescriptor = CreateFieldDescriptorObject<string>("Key", "Rules Key.");
-			var touchstreamFieldDescriptor = CreateFieldDescriptorObject<string>("Group", "Groups rule conditions. Rules with the same Group value will be included as an OR. Each unique Group value will be separated from other rule Groups with an AND. ");
+			var groupFieldDescriptor = CreateFieldDescriptorObject<string>("Group", "Groups rule conditions. Rules with the same Group value will be included as an OR. Each unique Group value will be separated from other rule Groups with an AND. ");
 
 			List<FieldDescriptor> fieldDescriptors = new List<FieldDescriptor>
-				{
-					operationFieldDescriptor,
-					valueFieldDescriptor,
-					keyFieldDescriptor,
-					touchstreamFieldDescriptor,
-				};
+			{
+				operationFieldDescriptor,
+				valueFieldDescriptor,
+				keyFieldDescriptor,
+				groupFieldDescriptor,
+				fieldFieldDescriptor,
+			};
 
 			var domInstanceSection = CreateOrUpdateSection("Rules", domHelper, fieldDescriptors);
 
@@ -183,16 +185,18 @@ public class Script
 			var categoryFieldDescriptor = CreateFieldDescriptorObject<string>("Category", "Category of the Conviva filter.");
 			var subcategoryFieldDescriptor = CreateFieldDescriptorObject<string>("Subcategory", "Subcategory of the Conviva filter.");
 			var enabledFieldDescriptor = CreateFieldDescriptorObject<bool>("Enabled", "Indicates if the filter will be active or inactive.", new ValueWrapper<bool>(true));
+			var instanceIdFieldDescriptor = CreateFieldDescriptorObject<string>("InstanceId", "The InstanceId value of the DOM Instance previously created.");
 
 			List<FieldDescriptor> fieldDescriptors = new List<FieldDescriptor>
-				{
-					convivaElementFieldDescriptor,
-					typeFieldDescriptor,
-					convivaNameFieldDescriptor,
-					categoryFieldDescriptor,
-					subcategoryFieldDescriptor,
-					enabledFieldDescriptor,
-				};
+			{
+				convivaElementFieldDescriptor,
+				typeFieldDescriptor,
+				convivaNameFieldDescriptor,
+				categoryFieldDescriptor,
+				subcategoryFieldDescriptor,
+				enabledFieldDescriptor,
+				instanceIdFieldDescriptor,
+			};
 
 			var provisionInfoSection = CreateOrUpdateSection("Filter", domHelper, fieldDescriptors);
 
@@ -326,27 +330,27 @@ public class Script
 		public static DomBehaviorDefinition CreateDomBehaviorDefinition(List<SectionDefinition> sections)
 		{
 			var statuses = new List<DomStatus>
-					{
-						new DomStatus("draft", "Draft"),
-						new DomStatus("ready", "Ready"),
-						new DomStatus("in_progress", "In Progress"),
-						new DomStatus("active", "Active"),
-						new DomStatus("deactivate", "Deactivate"),
-						new DomStatus("reprovision", "Reprovision"),
-						new DomStatus("complete", "Complete"),
-					};
+			{
+				new DomStatus("draft", "Draft"),
+				new DomStatus("ready", "Ready"),
+				new DomStatus("in_progress", "In Progress"),
+				new DomStatus("active", "Active"),
+				new DomStatus("deactivate", "Deactivate"),
+				new DomStatus("reprovision", "Reprovision"),
+				new DomStatus("complete", "Complete"),
+			};
 
 			var transitions = new List<DomStatusTransition>
-					{
-						new DomStatusTransition("draft_to_ready", "draft", "ready"),
-						new DomStatusTransition("ready_to_inprogress", "ready", "in_progress"),
-						new DomStatusTransition("inprogress_to_active", "in_progress", "active"),
-						new DomStatusTransition("active_to_deactivate", "active", "deactivate"),
-						new DomStatusTransition("active_to_reprovision", "active", "reprovision"),
-						new DomStatusTransition("deactivate_to_complete", "deactivate", "complete"),
-						new DomStatusTransition("reprovision_to_inprogress", "reprovision", "in_progress"),
-						new DomStatusTransition("complete_to_ready", "complete", "ready"),
-					};
+			{
+				new DomStatusTransition("draft_to_ready", "draft", "ready"),
+				new DomStatusTransition("ready_to_inprogress", "ready", "in_progress"),
+				new DomStatusTransition("inprogress_to_active", "in_progress", "active"),
+				new DomStatusTransition("active_to_deactivate", "active", "deactivate"),
+				new DomStatusTransition("active_to_reprovision", "active", "reprovision"),
+				new DomStatusTransition("deactivate_to_complete", "deactivate", "complete"),
+				new DomStatusTransition("reprovision_to_ready", "reprovision", "ready"),
+				new DomStatusTransition("complete_to_ready", "complete", "ready"),
+			};
 
 			var scriptAction = new ExecuteScriptDomActionDefinition("start_process")
 			{
@@ -370,7 +374,7 @@ public class Script
 
 		private static List<DomStatusSectionDefinitionLink> GetStatusLinks(List<SectionDefinition> sections)
 		{
-			Dictionary<string, List<FieldDescriptorID>> fieldsList = GetFieldDescriptorDictionary(sections);
+			Dictionary<string, List<FieldDescriptor>> fieldsList = GetFieldDescriptorDictionary(sections);
 
 			var draftStatusLinks = StatusSectionDefinitions.GetSectionDefinitionLinks(sections, fieldsList, "draft", false);
 			var readyStatusLinks = StatusSectionDefinitions.GetSectionDefinitionLinks(sections, fieldsList, "ready", true);
@@ -383,9 +387,9 @@ public class Script
 			return draftStatusLinks.Concat(readyStatusLinks).Concat(inprogressStatusLinks).Concat(activeStatusLinks).Concat(deactivateStatusLinks).Concat(reprovisionStatusLinks).Concat(completeStatusLinks).ToList();
 		}
 
-		private static Dictionary<string, List<FieldDescriptorID>> GetFieldDescriptorDictionary(List<SectionDefinition> sections)
+		private static Dictionary<string, List<FieldDescriptor>> GetFieldDescriptorDictionary(List<SectionDefinition> sections)
 		{
-			Dictionary<string, List<FieldDescriptorID>> fieldsList = new Dictionary<string, List<FieldDescriptorID>>();
+			Dictionary<string, List<FieldDescriptor>> fieldsList = new Dictionary<string, List<FieldDescriptor>>();
 			foreach (var section in sections)
 			{
 				var fields = section.GetAllFieldDescriptors();
@@ -394,10 +398,10 @@ public class Script
 					var sectionName = section.GetName();
 					if (!fieldsList.ContainsKey(sectionName))
 					{
-						fieldsList[sectionName] = new List<FieldDescriptorID>();
+						fieldsList[sectionName] = new List<FieldDescriptor>();
 					}
 
-					fieldsList[sectionName].Add(field.ID);
+					fieldsList[sectionName].Add(field);
 				}
 			}
 
@@ -406,7 +410,7 @@ public class Script
 
 		public class StatusSectionDefinitions
 		{
-			public static List<DomStatusSectionDefinitionLink> GetSectionDefinitionLinks(List<SectionDefinition> sections, Dictionary<string, List<FieldDescriptorID>> fieldsList, string status, bool readOnly)
+			public static List<DomStatusSectionDefinitionLink> GetSectionDefinitionLinks(List<SectionDefinition> sections, Dictionary<string, List<FieldDescriptor>> fieldsList, string status, bool readOnly)
 			{
 				var sectionLinks = new List<DomStatusSectionDefinitionLink>();
 				foreach (var section in sections)
@@ -415,14 +419,21 @@ public class Script
 
 					var statusLink = new DomStatusSectionDefinitionLink(statusLinkId);
 
-					foreach (var fieldId in fieldsList[section.GetName()])
+					foreach (var field in fieldsList[section.GetName()])
 					{
-						statusLink.FieldDescriptorLinks.Add(new DomStatusFieldDescriptorLink(fieldId)
+						var domStatusfieldDescriptorLink = new DomStatusFieldDescriptorLink(field.ID)
 						{
 							Visible = true,
 							ReadOnly = readOnly,
 							RequiredForStatus = true,
-						});
+						};
+
+						if ((status.Equals("draft") && field.Name.Equals("InstanceId")) || field.Name.Equals("Key"))
+						{
+							domStatusfieldDescriptorLink.RequiredForStatus = false;
+						}
+
+						statusLink.FieldDescriptorLinks.Add(domStatusfieldDescriptorLink);
 					}
 
 					sectionLinks.Add(statusLink);
