@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Create Conviva FilterTests")]
+[assembly: AssemblyTitle("CreateConvivaFilterTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Create Conviva FilterTests")]
+[assembly: AssemblyProduct("CreateConvivaFilterTests")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a0868a9a-16f0-418e-a17a-4c67522e3b0f")]
+[assembly: Guid("b134b3be-bace-4040-af48-f82d327fdc98")]
 
 // Version information for an assembly consists of the following four values:
 //

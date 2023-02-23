@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0868A9A-16F0-418E-A17A-4C67522E3B0F}</ProjectGuid>
+    <ProjectGuid>{B134B3BE-BACE-4040-AF48-F82D327FDC98}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Create_Conviva_FilterTests</RootNamespace>
-    <AssemblyName>Create Conviva FilterTests</AssemblyName>
+    <RootNamespace>CreateConvivaFilterTests</RootNamespace>
+    <AssemblyName>CreateConvivaFilterTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,10 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ProcessAutomation, Version=1.3.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dlls\ProcessAutomation.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -51,8 +47,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CreateConvivaFilterScriptTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScriptTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Moq">
@@ -62,7 +58,7 @@
       <Version>2.2.7</Version>
     </PackageReference>
     <PackageReference Include="MSTest.TestFramework">
-      <Version>3.0.2</Version>
+      <Version>2.2.7</Version>
     </PackageReference>
     <PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Automation">
       <Version>1.1.0.1</Version>
@@ -72,9 +68,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Create Conviva Filter\Create Conviva Filter.csproj">
-      <Project>{5F57757D-864B-498F-946F-AE237A27BB81}</Project>
-      <Name>Create Conviva Filter</Name>
+    <ProjectReference Include="..\CreateConvivaFilter\CreateConvivaFilter.csproj">
+      <Project>{242A101A-F1CF-402E-A941-9223B8B77FE8}</Project>
+      <Name>CreateConvivaFilter</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

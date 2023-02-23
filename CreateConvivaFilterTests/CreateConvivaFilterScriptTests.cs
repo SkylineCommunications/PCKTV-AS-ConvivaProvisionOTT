@@ -18,192 +18,192 @@ using System.Threading.Tasks;
 namespace Tests
 {
     [TestClass()]
-    public class ScriptTests
+    public class CreateConvivaFilterScriptTests
     {
         [TestMethod()]
         public void GetRuleByFilterTest()
         {
-            Mock<Engine> fakeEngine = new Mock<Engine>();
-            var engine = fakeEngine.Object;
-            var scriptClass = new CreateConvivaFilterScript();
-            var dom = new Dom();
+			Mock<Engine> fakeEngine = new Mock<Engine>();
+			var engine = fakeEngine.Object;
+			var scriptClass = new CreateConvivaFilterScript();
+			var dom = new Dom();
 
-            var domHelper = new DomHelper(engine.SendSLNetMessages, "process_automation");
-            var isDomCreated = dom.CreateDom(engine, domHelper);
-            if (!isDomCreated)
-            {
-                return;
-            }            
+			var domHelper = new DomHelper(engine.SendSLNetMessages, "process_automation");
+			var isDomCreated = dom.CreateDom(engine, domHelper);
+			if (!isDomCreated)
+			{
+				return;
+			}
 
-            var domInstance = dom.CreateDomInstance(domHelper);
+			var domInstance = dom.CreateDomInstance(domHelper);
 
-            var rulesList = scriptClass.GetRuleByFilter(engine, domInstance);
+			var rulesList = scriptClass.GetRuleByFilter(engine, domInstance);
 
-            Assert.IsNotNull(rulesList);
-        }
+			Assert.IsNotNull(rulesList);
+		}
     }
 
-    public class Dom
-    {
-        public DomInstance CreateDomInstance(DomHelper domHelper)
-        {
-            // SectionDefinitions
-            var filterSectionDefinitionId = new SectionDefinitionID(Guid.Parse("9f69fdde-e84e-44ef-bb84-f4ec3b7e03d4"));
-            var rulesSectionDefinitionId = new SectionDefinitionID(Guid.Parse("de83b440-fe18-4ca5-acea-c35d0c3d9cfa"));
+	public class Dom
+	{
+		public DomInstance CreateDomInstance(DomHelper domHelper)
+		{
+			// SectionDefinitions
+			var filterSectionDefinitionId = new SectionDefinitionID(Guid.Parse("9f69fdde-e84e-44ef-bb84-f4ec3b7e03d4"));
+			var rulesSectionDefinitionId = new SectionDefinitionID(Guid.Parse("de83b440-fe18-4ca5-acea-c35d0c3d9cfa"));
 
-            // Fields
-            var convivaElementFieldDescriptorId = new FieldDescriptorID(Guid.Parse("52db26ba-de97-4354-8692-fd9fdcb84dba"));
-            var typeFieldDescriptorId = new FieldDescriptorID(Guid.Parse("f9fc8955-1d63-4c80-a5fa-13708d41ea67"));
-            var convivaNameFieldDescriptorId = new FieldDescriptorID(Guid.Parse("5768a20b-9398-4472-8378-c29caa0c1cd5"));
-            var categoryFieldDescriptorId = new FieldDescriptorID(Guid.Parse("61760703-5095-4780-96e4-543c57758105"));
-            var subcategoryFieldDescriptorId = new FieldDescriptorID(Guid.Parse("cd5ae5cc-d1c1-490c-8058-93eea62658f9"));
-            var enabledFieldDescriptorId = new FieldDescriptorID(Guid.Parse("504b2817-c11a-4174-ae68-ff0661314e27"));
-            var instanceIdFieldDescriptorId = new FieldDescriptorID(Guid.Parse("efa78ff1-9347-49eb-8200-907f6489ed11"));
+			// Fields
+			var convivaElementFieldDescriptorId = new FieldDescriptorID(Guid.Parse("52db26ba-de97-4354-8692-fd9fdcb84dba"));
+			var typeFieldDescriptorId = new FieldDescriptorID(Guid.Parse("f9fc8955-1d63-4c80-a5fa-13708d41ea67"));
+			var convivaNameFieldDescriptorId = new FieldDescriptorID(Guid.Parse("5768a20b-9398-4472-8378-c29caa0c1cd5"));
+			var categoryFieldDescriptorId = new FieldDescriptorID(Guid.Parse("61760703-5095-4780-96e4-543c57758105"));
+			var subcategoryFieldDescriptorId = new FieldDescriptorID(Guid.Parse("cd5ae5cc-d1c1-490c-8058-93eea62658f9"));
+			var enabledFieldDescriptorId = new FieldDescriptorID(Guid.Parse("504b2817-c11a-4174-ae68-ff0661314e27"));
+			var instanceIdFieldDescriptorId = new FieldDescriptorID(Guid.Parse("efa78ff1-9347-49eb-8200-907f6489ed11"));
 
-            var fieldFieldDescriptorId = new FieldDescriptorID(Guid.Parse("4366c511-deb2-4859-b07b-50240586890b"));
-            var keyFieldDescriptorId = new FieldDescriptorID(Guid.Parse("476d740b-59f6-459b-92d4-3fac099935d5"));
-            var operatorFieldDescriptorId = new FieldDescriptorID(Guid.Parse("5f8b81bd-4ef4-4344-916a-b919a665ce1b"));
-            var valueFieldDescriptorId = new FieldDescriptorID(Guid.Parse("c2ec7629-67b8-4090-b9f8-94093609ecd4"));
-            var groupFieldDescriptorId = new FieldDescriptorID(Guid.Parse("5e864ce1-a84e-4cc6-a3fe-26a844c3d857"));
+			var fieldFieldDescriptorId = new FieldDescriptorID(Guid.Parse("4366c511-deb2-4859-b07b-50240586890b"));
+			var keyFieldDescriptorId = new FieldDescriptorID(Guid.Parse("476d740b-59f6-459b-92d4-3fac099935d5"));
+			var operatorFieldDescriptorId = new FieldDescriptorID(Guid.Parse("5f8b81bd-4ef4-4344-916a-b919a665ce1b"));
+			var valueFieldDescriptorId = new FieldDescriptorID(Guid.Parse("c2ec7629-67b8-4090-b9f8-94093609ecd4"));
+			var groupFieldDescriptorId = new FieldDescriptorID(Guid.Parse("5e864ce1-a84e-4cc6-a3fe-26a844c3d857"));
 
-            // DomDefinition
-            var domDefinitionId = new DomDefinitionId(Guid.Parse("269725f0-400b-45d2-97cf-30cd05e0122b"));
+			// DomDefinition
+			var domDefinitionId = new DomDefinitionId(Guid.Parse("269725f0-400b-45d2-97cf-30cd05e0122b"));
 
-            // Add values to fields
-            var filterFieldValues = new List<FieldValue>
-            {
-                new FieldValue(convivaElementFieldDescriptorId, new ValueWrapper<string>("Conviva Test Platform - Test")),
-                new FieldValue(typeFieldDescriptorId, new ValueWrapper<string>("create_filter")),
-                new FieldValue(convivaNameFieldDescriptorId, new ValueWrapper<string>("Unit Test Conviva")),
-                new FieldValue(categoryFieldDescriptorId, new ValueWrapper<string>("CONTENT")),
-                new FieldValue(subcategoryFieldDescriptorId, new ValueWrapper<string>("Asset")),
-                new FieldValue(enabledFieldDescriptorId, new ValueWrapper<string>("true")),
-                new FieldValue(instanceIdFieldDescriptorId, new ValueWrapper<string>("")),
-            };
+			// Add values to fields
+			var filterFieldValues = new List<FieldValue>
+			{
+				new FieldValue(convivaElementFieldDescriptorId, new ValueWrapper<string>("Conviva Test Platform - Test")),
+				new FieldValue(typeFieldDescriptorId, new ValueWrapper<string>("create_filter")),
+				new FieldValue(convivaNameFieldDescriptorId, new ValueWrapper<string>("Unit Test Conviva")),
+				new FieldValue(categoryFieldDescriptorId, new ValueWrapper<string>("CONTENT")),
+				new FieldValue(subcategoryFieldDescriptorId, new ValueWrapper<string>("Asset")),
+				new FieldValue(enabledFieldDescriptorId, new ValueWrapper<string>("true")),
+				new FieldValue(instanceIdFieldDescriptorId, new ValueWrapper<string>("")),
+			};
 
-            var filterSection = new Section { SectionDefinitionID = filterSectionDefinitionId };
-            foreach (var fieldValue in filterFieldValues)
-            {
-                filterSection.AddOrReplaceFieldValue(fieldValue);
-            }
+			var filterSection = new Section { SectionDefinitionID = filterSectionDefinitionId };
+			foreach (var fieldValue in filterFieldValues)
+			{
+				filterSection.AddOrReplaceFieldValue(fieldValue);
+			}
 
-            var rulesFieldValues = new List<FieldValue>
-            {
-                new FieldValue(fieldFieldDescriptorId, new ValueWrapper<string>("Asset Name")),
-                new FieldValue(keyFieldDescriptorId, new ValueWrapper<string>("")),
-                new FieldValue(operatorFieldDescriptorId, new ValueWrapper<string>("contains")),
-                new FieldValue(valueFieldDescriptorId, new ValueWrapper<string>("Live-1234")),
-                new FieldValue(groupFieldDescriptorId, new ValueWrapper<string>("1")),
-            };
+			var rulesFieldValues = new List<FieldValue>
+			{
+				new FieldValue(fieldFieldDescriptorId, new ValueWrapper<string>("Asset Name")),
+				new FieldValue(keyFieldDescriptorId, new ValueWrapper<string>("")),
+				new FieldValue(operatorFieldDescriptorId, new ValueWrapper<string>("contains")),
+				new FieldValue(valueFieldDescriptorId, new ValueWrapper<string>("Live-1234")),
+				new FieldValue(groupFieldDescriptorId, new ValueWrapper<string>("1")),
+			};
 
-            var rulesSection = new Section { SectionDefinitionID = rulesSectionDefinitionId };
-            foreach (var fieldValue in rulesFieldValues)
-            {
-                rulesSection.AddOrReplaceFieldValue(fieldValue);
-            }
+			var rulesSection = new Section { SectionDefinitionID = rulesSectionDefinitionId };
+			foreach (var fieldValue in rulesFieldValues)
+			{
+				rulesSection.AddOrReplaceFieldValue(fieldValue);
+			}
 
-            var rulesFieldValues2 = new List<FieldValue>
-            {
-                new FieldValue(fieldFieldDescriptorId, new ValueWrapper<string>("Asset Name")),
-                new FieldValue(keyFieldDescriptorId, new ValueWrapper<string>("")),
-                new FieldValue(operatorFieldDescriptorId, new ValueWrapper<string>("contains")),
-                new FieldValue(valueFieldDescriptorId, new ValueWrapper<string>("Live-1234")),
-                new FieldValue(groupFieldDescriptorId, new ValueWrapper<string>("1")),
-            };
+			var rulesFieldValues2 = new List<FieldValue>
+			{
+				new FieldValue(fieldFieldDescriptorId, new ValueWrapper<string>("Asset Name")),
+				new FieldValue(keyFieldDescriptorId, new ValueWrapper<string>("")),
+				new FieldValue(operatorFieldDescriptorId, new ValueWrapper<string>("contains")),
+				new FieldValue(valueFieldDescriptorId, new ValueWrapper<string>("Live-1234")),
+				new FieldValue(groupFieldDescriptorId, new ValueWrapper<string>("1")),
+			};
 
-            var rulesSection2 = new Section { SectionDefinitionID = rulesSectionDefinitionId };
-            foreach (var fieldValue in rulesFieldValues2)
-            {
-                rulesSection2.AddOrReplaceFieldValue(fieldValue);
-            }
+			var rulesSection2 = new Section { SectionDefinitionID = rulesSectionDefinitionId };
+			foreach (var fieldValue in rulesFieldValues2)
+			{
+				rulesSection2.AddOrReplaceFieldValue(fieldValue);
+			}
 
-            var domInstance = new DomInstance()
-            {
-                DomDefinitionId = domDefinitionId
-            };
+			var domInstance = new DomInstance()
+			{
+				DomDefinitionId = domDefinitionId
+			};
 
-            // Add all Sections
-            domInstance.Sections.Add(filterSection);
-            domInstance.Sections.Add(rulesSection);
-            domInstance.Sections.Add(rulesSection2);
+			// Add all Sections
+			domInstance.Sections.Add(filterSection);
+			domInstance.Sections.Add(rulesSection);
+			domInstance.Sections.Add(rulesSection2);
 
-            // Save the DomInstance to the DomManager
-            domInstance = domHelper.DomInstances.Create(domInstance);
+			// Save the DomInstance to the DomManager
+			domInstance = domHelper.DomInstances.Create(domInstance);
 
-            return domInstance;
-        }
+			return domInstance;
+		}
 
-        public bool CreateDom(Engine engine, DomHelper domHelper)
-        {
-            try
-            {
-                // Conviva
-                var peacockProvisionDomDefinition = CreateDomDefinition(domHelper);
-                if (peacockProvisionDomDefinition != null)
-                {
-                    var domDefinition = domHelper.DomDefinitions.Read(DomDefinitionExposers.Name.Equal(peacockProvisionDomDefinition.Name));
-                    if (domDefinition.Any())
-                    {
-                        peacockProvisionDomDefinition.ID = domDefinition.FirstOrDefault()?.ID;
-                        domHelper.DomDefinitions.Update(peacockProvisionDomDefinition);
-                    }
-                    else
-                    {
-                        domHelper.DomDefinitions.Create(peacockProvisionDomDefinition);
-                    }
+		public bool CreateDom(Engine engine, DomHelper domHelper)
+		{
+			try
+			{
+				// Conviva
+				var peacockProvisionDomDefinition = CreateDomDefinition(domHelper);
+				if (peacockProvisionDomDefinition != null)
+				{
+					var domDefinition = domHelper.DomDefinitions.Read(DomDefinitionExposers.Name.Equal(peacockProvisionDomDefinition.Name));
+					if (domDefinition.Any())
+					{
+						peacockProvisionDomDefinition.ID = domDefinition.FirstOrDefault()?.ID;
+						domHelper.DomDefinitions.Update(peacockProvisionDomDefinition);
+					}
+					else
+					{
+						domHelper.DomDefinitions.Create(peacockProvisionDomDefinition);
+					}
 
-                    return true;
-                }
+					return true;
+				}
 
-                return false;
-            }
-            catch (Exception ex)
-            {
-                engine.Log($"|Failed to create Conviva DOM due to exception: " + ex);
-                return false;
-            }
-        }
+				return false;
+			}
+			catch (Exception ex)
+			{
+				engine.Log($"|Failed to create Conviva DOM due to exception: " + ex);
+				return false;
+			}
+		}
 
-        private DomDefinition CreateDomDefinition(DomHelper domHelper)
-        {
-            // Create SectionDefinitions
-            var filterSectionDefinition = SectionDefinitions.CreateFilterSection(domHelper);
-            var rulesSectionDefinition = SectionDefinitions.CreateRulesSection(domHelper);
+		private DomDefinition CreateDomDefinition(DomHelper domHelper)
+		{
+			// Create SectionDefinitions
+			var filterSectionDefinition = SectionDefinitions.CreateFilterSection(domHelper);
+			var rulesSectionDefinition = SectionDefinitions.CreateRulesSection(domHelper);
 
-            var sections = new List<SectionDefinition> { filterSectionDefinition, rulesSectionDefinition };
+			var sections = new List<SectionDefinition> { filterSectionDefinition, rulesSectionDefinition };
 
-            // Create DomBehaviorDefinition
-            var behavior = domHelper.DomBehaviorDefinitions.Read(DomBehaviorDefinitionExposers.Name.Equal("Conviva Behavior"));
-            if (!behavior.Any())
-            {
-                var domBehaviorDefinition = BehaviorDefinitions.CreateDomBehaviorDefinition(sections);
-                domBehaviorDefinition = domHelper.DomBehaviorDefinitions.Create(domBehaviorDefinition);
-                behavior = new List<DomBehaviorDefinition> { domBehaviorDefinition };
-            }
+			// Create DomBehaviorDefinition
+			var behavior = domHelper.DomBehaviorDefinitions.Read(DomBehaviorDefinitionExposers.Name.Equal("Conviva Behavior"));
+			if (!behavior.Any())
+			{
+				var domBehaviorDefinition = BehaviorDefinitions.CreateDomBehaviorDefinition(sections);
+				domBehaviorDefinition = domHelper.DomBehaviorDefinitions.Create(domBehaviorDefinition);
+				behavior = new List<DomBehaviorDefinition> { domBehaviorDefinition };
+			}
 
-            var filterSectionInfo = new SectionDefinitionInfo
-            {
-                AllowMultipleInstances = false,
-                SectionDefinitionID = filterSectionDefinition.GetID(),
-            };
+			var filterSectionInfo = new SectionDefinitionInfo
+			{
+				AllowMultipleInstances = false,
+				SectionDefinitionID = filterSectionDefinition.GetID(),
+			};
 
-            var rulesSectionInfo = new SectionDefinitionInfo
-            {
-                AllowMultipleInstances = true,
-                SectionDefinitionID = rulesSectionDefinition.GetID(),
-            };
+			var rulesSectionInfo = new SectionDefinitionInfo
+			{
+				AllowMultipleInstances = true,
+				SectionDefinitionID = rulesSectionDefinition.GetID(),
+			};
 
-            var sectionDefinitionInfos = new List<SectionDefinitionInfo> { filterSectionInfo, rulesSectionInfo };
+			var sectionDefinitionInfos = new List<SectionDefinitionInfo> { filterSectionInfo, rulesSectionInfo };
 
 			return new DomDefinition
 			{
 				ID = new DomDefinitionId(Guid.Parse("269725f0-400b-45d2-97cf-30cd05e0122b")),
-                Name = "Conviva",
-                SectionDefinitionLinks = new List<SectionDefinitionLink> { new SectionDefinitionLink(filterSectionDefinition.GetID()), new SectionDefinitionLink(rulesSectionDefinition.GetID()) },
-                DomBehaviorDefinitionId = behavior.FirstOrDefault()?.ID,
-                VisualStructure = new DomDefinitionVisualStructure { SectionDefinitionInfos = sectionDefinitionInfos },
-            };
-        }
+				Name = "Conviva",
+				SectionDefinitionLinks = new List<SectionDefinitionLink> { new SectionDefinitionLink(filterSectionDefinition.GetID()), new SectionDefinitionLink(rulesSectionDefinition.GetID()) },
+				DomBehaviorDefinitionId = behavior.FirstOrDefault()?.ID,
+				VisualStructure = new DomDefinitionVisualStructure { SectionDefinitionInfos = sectionDefinitionInfos },
+			};
+		}
 
 		public class SectionDefinitions
 		{
@@ -395,27 +395,27 @@ namespace Tests
 			public static DomBehaviorDefinition CreateDomBehaviorDefinition(List<SectionDefinition> sections)
 			{
 				var statuses = new List<DomStatus>
-					{
-						new DomStatus("draft", "Draft"),
-						new DomStatus("ready", "Ready"),
-						new DomStatus("in_progress", "In Progress"),
-						new DomStatus("active", "Active"),
-						new DomStatus("deactivate", "Deactivate"),
-						new DomStatus("reprovision", "Reprovision"),
-						new DomStatus("complete", "Complete"),
-					};
+				{
+					new DomStatus("draft", "Draft"),
+					new DomStatus("ready", "Ready"),
+					new DomStatus("in_progress", "In Progress"),
+					new DomStatus("active", "Active"),
+					new DomStatus("deactivate", "Deactivate"),
+					new DomStatus("reprovision", "Reprovision"),
+					new DomStatus("complete", "Complete"),
+				};
 
 				var transitions = new List<DomStatusTransition>
-					{
-						new DomStatusTransition("draft_to_ready", "draft", "ready"),
-						new DomStatusTransition("ready_to_inprogress", "ready", "in_progress"),
-						new DomStatusTransition("inprogress_to_active", "in_progress", "active"),
-						new DomStatusTransition("active_to_deactivate", "active", "deactivate"),
-						new DomStatusTransition("active_to_reprovision", "active", "reprovision"),
-						new DomStatusTransition("deactivate_to_complete", "deactivate", "complete"),
-						new DomStatusTransition("reprovision_to_inprogress", "reprovision", "in_progress"),
-						new DomStatusTransition("complete_to_ready", "complete", "ready"),
-					};
+				{
+					new DomStatusTransition("draft_to_ready", "draft", "ready"),
+					new DomStatusTransition("ready_to_inprogress", "ready", "in_progress"),
+					new DomStatusTransition("inprogress_to_active", "in_progress", "active"),
+					new DomStatusTransition("active_to_deactivate", "active", "deactivate"),
+					new DomStatusTransition("active_to_reprovision", "active", "reprovision"),
+					new DomStatusTransition("deactivate_to_complete", "deactivate", "complete"),
+					new DomStatusTransition("reprovision_to_inprogress", "reprovision", "in_progress"),
+					new DomStatusTransition("complete_to_ready", "complete", "ready"),
+				};
 
 				var scriptAction = new ExecuteScriptDomActionDefinition("start_process")
 				{
