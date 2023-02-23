@@ -28,7 +28,7 @@ namespace Tests
             var scriptClass = new CreateConvivaFilterScript();
             var dom = new Dom();
 
-            var domHelper = new DomHelper(engine.SendSLNetMessages, "test_process_automation");
+            var domHelper = new DomHelper(engine.SendSLNetMessages, "process_automation");
             var isDomCreated = dom.CreateDom(engine, domHelper);
             if (!isDomCreated)
             {
